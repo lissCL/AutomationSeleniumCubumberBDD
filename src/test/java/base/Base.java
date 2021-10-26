@@ -10,19 +10,21 @@ import java.util.List;
 
 public class Base {
     private WebDriver driver;
-    private String URL;
 
-    public Base(WebDriver driver, String URL) {
+    public Base(WebDriver driver) {
         this.driver = driver;
-        this.URL = URL;
     }
 
     public WebDriver chromeDriverConnection(){
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
         return driver;
     }
-
+    public void CloseWeb() throws InterruptedException {
+        Thread.sleep(5000);
+        driver.close();
+    }
 
     public WebElement findElement(By locator){
         return driver.findElement(locator);
