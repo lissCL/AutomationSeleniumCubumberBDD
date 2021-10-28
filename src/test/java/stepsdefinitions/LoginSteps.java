@@ -7,10 +7,6 @@ import org.testng.Assert;
 
 public class LoginSteps extends BaseTest {
 
-    @Before
-    public void setup(){
-        loginPage.chromeDriverConnection();
-    }
     @After
     public void teardown() throws InterruptedException {
         loginPage.closeWeb();
@@ -18,7 +14,7 @@ public class LoginSteps extends BaseTest {
 
     @Given("user is on login page")
     public void user_is_on_login_page() {
-        //loginPage.chromeDriverConnection();
+        loginPage.chromeDriverConnection();
         loginPage.visit(URL);
     }
     @When("user enters valid credentials")

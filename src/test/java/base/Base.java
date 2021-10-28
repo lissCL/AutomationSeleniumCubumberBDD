@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -28,7 +30,7 @@ public class Base {
         driver.quit();
     }
 
-    public WebElement findElement(By locator){
+    public WebElement findElementos(By locator){
         return driver.findElement(locator);
     }
     public List<WebElement> findElements(By locator){
@@ -43,14 +45,6 @@ public class Base {
         return driver.findElement(locator).getText();
     }
 
-    public void type(String inputText, By locator){
-        driver.findElement(locator).sendKeys(inputText);
-    }
-
-    public void click(By locator){
-        driver.findElement(locator).click();
-    }
-
     public Boolean isDisplayed(By locator){
         try {
             return driver.findElement(locator).isDisplayed();
@@ -62,4 +56,17 @@ public class Base {
     public void visit(String url){
         driver.get(url);
     }
+
+
+    //keyboard interface
+    public void type(String inputText, By locator){
+        driver.findElement(locator).sendKeys(inputText);
+    }
+
+    //mouse interface
+    public void click(By locator){
+        driver.findElement(locator).click();
+    }
+
+
 }
