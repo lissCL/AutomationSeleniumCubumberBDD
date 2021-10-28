@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class Base {
     private WebDriver driver;
@@ -19,11 +20,12 @@ public class Base {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         return driver;
     }
-    public void CloseWeb() throws InterruptedException {
+    public void closeWeb() throws InterruptedException {
         Thread.sleep(5000);
-        driver.close();
+        driver.quit();
     }
 
     public WebElement findElement(By locator){
